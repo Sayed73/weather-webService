@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Weather Forecast</h1>
+    <div class="weather-card">
+
+        <form action="/weather">
+            <input type="text" name="city" id="city" placeholder="Enter a City" />
+            <button type="submit">Submit</button>
+        </form>
+
+
+        <div id="map" style="height: 300px;"></div>
+    </div>
+</div>
+
+<script>
+    var map = L.map('map').setView([0.0000,0.0000], 0.1); // The coordinates and zoom level
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 15,
+    }).addTo(map);
+</script>
+{% endblock %}
